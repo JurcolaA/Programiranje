@@ -19,9 +19,6 @@ def ocisti_tekst(tekst):
     lista_rijeci = tekst.split()
     return lista_rijeci
 
-
-    return tekst 
-
 #funkcija za brojanje frekvecnciju rjeci u tekstu
 def broji_frekvenciju(lista_rijeci):
     #1. kreirati prazan rječnik koji će čuvati rezultate 
@@ -41,7 +38,16 @@ def ukloni_stop_words(rjecnik_frekvencija, stop_words_lista):
             ocisceni_rjecnik[rijec] = frekvencija
     return ocisceni_rjecnik
 
+def ocisti_stop_words (lista_rjeci):
+    for rijec in lista_rjeci:
+        if rijec in STOP_WORDS:
+            lista_rjeci.remove(rijec)
+    return lista_rjeci
 
+#sortiranje 
+def sortiraj_i_ispisi(rjecnik_frekvencija):
+    sortiraj_i_ispisi = sorted(rjecnik_frekvencija.items(), key=lambda item: item[1], reverse=True)
+    return sortiraj_i_ispisi
 
 #glavni dio programa
 if __name__ == '__main__':
@@ -66,22 +72,27 @@ if __name__ == '__main__':
         print('-' * 40)
         print(ucitani_tekst.__len__())
 
+        cist_tekst = ocisti_stop_words(procisceni_tekst)
+
         #novi dio - pozivamo novu funkciju
         print("brojanje frekvencije riječi u tekstu:")
-        frekvencije = broji_frekvenciju(procisceni_tekst)
+        frekvencije = broji_frekvenciju(cist_tekst)
         print("Brojanje završeno.")
         # ispisujemo rezultate da vidimo da li je sve ok
         print('\n--- Rječnik frekvencija  ---')
         print(frekvencije)
         print('---------------------------')
-
-        #Faza 3 -filtriranje i sortiranje
-        ocisceni_rjecnik = ukloni_stop_words(frekvencije, STOP_WORDS)
-        print('\n--- očišćeni rječnik frekvencije  ---')
-        print(ocisceni_rjecnik)
-        print("---------------------------")
+        #sortiranje
+        broj_rijeci = sortiraj_i_ispisi(frekvencije)
     
     else: 
         print ('program se prekida jer tekst nije prociscen.')
 
+    if broj_rijeci:
+        
+        print("-" * 50)
+        print(broj_rijeci)
+        print("-" * 50)
+    else:
+        print("neka greška se dogodila.")
     
