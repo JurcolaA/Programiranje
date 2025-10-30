@@ -1,0 +1,81 @@
+""""
+moja_lista = []
+moja_lista.append(10)
+moja_lista.append(20)
+moja_lista.append(30)
+
+print(moja_lista)
+
+print(moja_lista[1])
+
+print(moja_lista[0:2])
+moja_lista.remove(20)
+print(moja_lista)
+
+# zadatak 1
+
+voce_lista = []
+voce_lista = ["jabuka", "banana", "kruska"]
+print(voce_lista[0])
+voce_lista.append("naranča")
+print(voce_lista)
+
+# Ovo je 2D lista (3 retka, 3 stupca)
+
+ormar = [
+    ['majica', 'kapa', 'sal'],    # 0. redak (polica)
+    ['hlace', 'carape', 'remen'], # 1. redak
+    ['jakna', 'cipele', 'cizme']  # 2. redak
+]
+
+print(ormar[1])
+print(ormar[1][1])
+print(ormar[2][2])
+print(ormar)
+
+for redak in ormar:
+    print(redak[1])
+
+# zadatak 2
+
+def pronadji_broj(lista, trazeni_broj):
+    for broj in lista:
+        if broj == trazeni_broj:
+            provjera = True
+            break
+        else: 
+            provjera = False
+
+    if provjera:
+        print(f"Broj {trazeni_broj} je pronađen u listi.")
+    else:
+        print(f"Broj {trazeni_broj} nije pronađen u listi.")
+            
+
+provjera = False
+
+lista_brojeva = [10,20,30,40,50]
+trazeni_broj = 30
+pronadji_broj(lista_brojeva, trazeni_broj)
+
+
+
+# zadatak 3
+
+U našem projektu "Alat za analizu teksta" dobili smo sortiranu listu n-torki:
+rezultati = [('hlapić', 15), ('gita', 12), ('majstor', 10)]
+1. Vaš zadatak je pretvoriti tu listu u pravu 2D listu (tablicu) koja sadrži i zaglavlje.
+2. Započnite s listom rezultati (prepišite je).
+3. Kreirajte novu listu tablica koja sadrži samo zaglavlje: tablica = [['Riječ', 'Frekvencija']].
+4. Pomoću for petlje prođite kroz listu rezultati.
+5. Unutar petlje, svaku n-torku (npr. ('hlapić', 15)) pretvorite u listu (pomoću funkcije list()) i dodajte je u tablicu pomoću .append().
+Na kraju, ispišite cijelu tablicu.
+Željeni konačni ispis:
+[['Riječ', 'Frekvencija'], ['hlapić', 15], ['gita', 12], ['majstor', 10]]
+
+"""
+rezultati = [('hlapić', 15), ('gita', 12), ('majstor', 10)]
+tablica = [['Riječ', 'Frekvencija']]
+for ntorka in rezultati:
+    tablica.append(list(ntorka))
+print(tablica)
